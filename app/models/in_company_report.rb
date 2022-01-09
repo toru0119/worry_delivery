@@ -1,0 +1,3 @@
+class InCompanyReport < ApplicationRecord
+
+end

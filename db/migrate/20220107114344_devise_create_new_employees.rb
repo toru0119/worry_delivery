@@ -34,6 +34,12 @@ class DeviseCreateNewEmployees < ActiveRecord::Migration[5.2]
 
 
       t.timestamps null: false
+      t.string :last_name
+      t.string :first_name
+      t.string :first_name_kana
+      t.string :last_name_kana
+      t.string :new_employee_id
+      t.string :introduction
     end
 
     add_index :new_employees, :email,                unique: true
