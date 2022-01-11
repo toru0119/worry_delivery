@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>社内報編集</h1>
+        <%= form_with url: admin_in_company_report_path(@in_company_report), model: @in_company_report, local: true do |f| %>
+         <%= f.label :社内報 %>
+         <%= f.text_field :body, class: "offset-1" %>
+         <%= f.submit "変更を保存", class: "btn btn-success offset-1" %>
+        <% end %>
+    </div>
+  </div>
+</div>

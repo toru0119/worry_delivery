@@ -1,0 +1,37 @@
+  <div class="row">
+
+    <div class="col-2"></div>
+    <div class="col-7">
+      <h1>社内報追加</h1>
+      <!--社内報の新規登録機能-->
+      <%=form_with model: @in_company_report, url: admin_in_company_reports_path, local: true do |f| %>
+        <h2>社内報</h2>
+        <%= f.text_field :body %>
+        <%= f.submit '新規登録', class: "btn btn-success offset-1" %>
+      <% end %>
+      <!--end-->
+      <table>
+        <thead>
+          <tr>
+            <th>社内報一覧</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--社内報一覧-->
+         <% @in_company_reports.each do |in_company_report| %>
+         <tr>
+           <td>
+            <%= in_company_report.body %>
+           </td>
+           <td>
+          <%= link_to "編集する", edit_admin_in_company_report(in_company_report.id), class:"btn btn-success" %>
+         <% end %>
+           </td>
+         </tr>
+         <!--end-->
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3"></div>
+  </div>

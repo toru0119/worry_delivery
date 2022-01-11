@@ -24,4 +24,14 @@ class Member::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  # 新入社員がログイン後の遷移先
+  def after_sign_in_path_for(resource)
+    member_new_employees_pash
+  end
+
+  # 新入社員がログアウト後の遷移先
+  def after_sign_out_path_for(resource)
+    new_new_employee_session_path
+  end
 end

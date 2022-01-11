@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   sessions: 'member/sessions'
   }
 
-    namespace :member do
+  namespace :member do
     root 'homes#top'
     resources :new_employees, only: [:index, :edit, :update]
     resources :customers, only: [:index, :show]
