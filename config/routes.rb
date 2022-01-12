@@ -16,8 +16,8 @@ Rails.application.routes.draw do
       post 'orders/confirm' => 'orders#confirm', on: :collection
     end
     resource :customers, only: [:show, :edit, :update] do
-      patch 'customers/withdraw' => 'customers#withdraw', on: :collection
-      get 'customers/confirm' => 'customers#confirm', on: :collection
+      # patch 'customers/withdraw' => 'customers#withdraw', on: :collection
+      # get 'customers/confirm' => 'customers#confirm', on: :collection
     end
   end
 

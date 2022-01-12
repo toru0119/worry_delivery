@@ -8,11 +8,19 @@
 
   <div class="col-md-9 offset-md-1">
     <div class="row item_lists">
+      <!--商品一覧に商品をカートに入れる機能をつける。問題点indexアクションに一覧機能(inex)、商品idの判明(show faind)、カート機能の実装-->
+      <!--faindはいらなかった。-->
       <% @items.each do |item| %>
-        <div class="col-md-3 item_list">
-          <%=  attachment_image_tag item, :image, size: "200x150" %>
-          <%= item.name %><br>
-        </div>
+
+        <%= attachment_image_tag item, :image, fallback: "nophoto_thumbnail.png", size: "170x150" %>
+        <%= item.name %>
+
+        <%= form_with model: @cart_item, url: cart_items_path, local:true do |f| %>
+          <%= f.hidden_field :item_id, value: item.id %>
+          <%= f.select :amount, options_for_select(((1..10).to_a)), include_blank: "個数選択" %>
+          <%= f.submit "カートに入れる" %>
+        <% end %>
+
       <% end %>
     </div>
   </div>

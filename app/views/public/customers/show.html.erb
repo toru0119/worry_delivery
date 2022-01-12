@@ -1,0 +1,23 @@
+<h2>マイページ</h2>
+<table class="table">
+  <tbody>
+    <tr><%= attachment_image_tag @customer, :customer_id, :size, "63x63", format: 'jpeg', fallback: "no_image.jpg" %></tr>
+    <tr>
+      <th>名前</th>
+      <th><%= @customer.full_name %></th>
+    </tr>
+    <tr>
+      <th>カナ</th>
+      <th><%= @customer.full_name_kana %></th>
+    </tr>
+    <tr>
+      <th>業務内容</th>
+      <th><%= @customer.business_outline %></th>
+    </tr>
+  </tbody>
+    <div class="row">
+      <%= link_to edit_customers_path(@customer.id) do %>
+        <p>設定</p>
+      <% end %>
+    </div>
+</table>
