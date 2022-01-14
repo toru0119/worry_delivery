@@ -1,0 +1,7 @@
+  ja:
+    enums:
+      order:
+        addresse:
+          seat1: "席番1"
+          seat2: "席番2"
+          seat3: "席番3"

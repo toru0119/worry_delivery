@@ -12,12 +12,11 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy] do
       delete 'destroy_all' => 'cart_items#destroy_all', on: :collection
     end
-    resources :orders, only: [:show] do
-      post 'orders/confirm' => 'orders#confirm', on: :collection
+    resources :orders, only: [:new, :index] do
+      post 'orders/complete' => 'orders#complete', on: :collection
     end
     resource :customers, only: [:show, :edit, :update] do
       # patch 'customers/withdraw' => 'customers#withdraw', on: :collection
-      # get 'customers/confirm' => 'customers#confirm', on: :collection
     end
   end
 

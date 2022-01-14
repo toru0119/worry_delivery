@@ -1,0 +1,31 @@
+<div class="position-center">
+  <h4><span class="page-title">注文履歴一覧</span></h4>
+</div>
+<div class="space"></div>
+
+<table class="table-center">
+  <thead>
+    <tr>
+      <th class="th-color column-narrow">注文日</th>
+      <th class="th-color column-narrow">注文商品</th>
+      <th class="th-color column-narrow">ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td class="text-center"><%= order.created_at.strftime("%Y/%m/%d") %></td>
+        <td>
+          <% order.order_lists.each do |order_list| %>
+            <%= order_list.item.name %><br>
+          <% end %>
+        </td>
+        <td class="text-center"><%= order.order_status_i18n %></td>
+        <td class="text-center"><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
+      </tr>
+      <!--配達員が誰だったのか表示-->
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @orders, theme: 'twitter-bootstrap-4' %>

@@ -1,7 +1,7 @@
 <h2>マイページ</h2>
 <table class="table">
   <tbody>
-    <tr><%= attachment_image_tag @customer, :customer_id, :size, "63x63", format: 'jpeg', fallback: "no_image.jpg" %></tr>
+    <tr><%= attachment_image_tag @customer, :customer, :size, "63x63", format: 'jpeg', fallback: "no_image.jpg" %></tr>
     <tr>
       <th>名前</th>
       <th><%= @customer.full_name %></th>

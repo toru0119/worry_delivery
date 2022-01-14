@@ -3,7 +3,7 @@ class NewEmployee < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
-  attachment :image
+
+  attachment :new_employees
   has_many :orders
 end
