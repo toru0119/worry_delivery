@@ -1,0 +1,24 @@
+<div class="container px-2">
+
+  <div class="row justify-content-center">
+    <div class="col-md-2.5 ribbon2">
+      <h3>新入社員一覧</h3>
+    </div>
+  </div>
+
+  <div class="col-md-9 offset-md-1">
+    <div class="row item_lists">
+      <% @new_employees.each do |new_employee| %>
+        <div class="col-md-3 item_list">
+          <%= attachment_image_tag new_employee, :image, size: "200x150" %>
+          <%= new_employee.name %><br>
+          <%= new_employee.introduction %>
+          <% if current_new_employee.member? && !current_new_employee?(new_employee) %>
+            <%= link_to "編集する", edit_member_new_employee_path(genre.id), class:"btn btn-success" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
