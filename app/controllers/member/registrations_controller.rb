@@ -5,9 +5,9 @@ class Member::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource
   # def create
@@ -59,12 +59,12 @@ class Member::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  
+
   protected
-  
-  # 新入社員新規登録後の遷移先
+
+  # 新入社員新規登録後の遷移先。ゆくゆくは注文履歴一覧に設定
   def after_sign_up_path_for(resource)
-     customers_path
+     member_new_employees_path
   end
 
   def configure_sign_up_params

@@ -1,0 +1,47 @@
+<% if @new_employee.errors.any? %>
+  <%= @new_employee.errors.count %>件のerrorが発生しました
+  <% @new_employee.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>マイページ編集</h2>
+      <%= form_with model: @new_employee, url: member_new_employee_path, local:true do |f| %>
+      <table class="table-center table-form">
+        <tr>
+          <td class="column-wide">
+              <%= attachment_image_tag @new_employee, :new_employee, :fill, 60, 60, fallback: "no_image.jpg"%>
+              <%= f.attachment_field :new_employee, placeholder: "プロフィール画像", class: "form-control-file image" %>
+          </td>
+        </tr>
+        <tr>
+          <th class="column-wide"><%= f.label :名前 %></th>
+          <td class="column-wide"><%= f.text_field :last_name, autofocus: true, id:"inputName", placeholder:"山田", class: "form-control name" %></td>
+          <td class="column-wide"><%= f.text_field :first_name, autofocus: true, id:"inputName", placeholder:"太郎", class: "form-control name" %></td>
+        </tr>
+        <tr>
+          <th class="column-wide"><%= f.label :フリガナ %></th>
+          <td class="column-wide"><%= f.text_field :last_name_kana, autofocus: true, id:"inputName", placeholder:"ヤマダ", class: "form-control name" %></td>
+          <td class="column-wide"><%= f.text_field :first_name_kana, autofocus: true, id:"inputName", placeholder:"タロウ", class: "form-control name" %></td>
+        </tr>
+        <tr>
+          <th class="column-wide"><%= f.label :意気込み %></th>
+          <td class="column-wide"><%= f.text_field :introduction, placeholder:"大学で学んだことや今後行なっていきたい業務など...", class: "form-control business_outline" %></td>
+          <td class="column-wide"></td>
+        </tr>
+        <tr>
+          <th class="column-wide"><%= f.label :メールアドレス %></th>
+          <td class="column-wide"><%= f.email_field :email, placeholder:"sample@examole.com", class: "form-control business_outline" %></td>
+          <td class="column-wide"></td>
+        </tr>
+      </table>
+      <div class="form-group">
+        <%= f.submit "更新", class: "btn btn-secondary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

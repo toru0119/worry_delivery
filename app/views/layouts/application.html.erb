@@ -36,6 +36,30 @@
               </li>
             </ul>
 
+        <!--#新入社員がログイン状態-->
+        <nav class="navbar navbar-expand navbar-dark bg-">
+          <% elsif new_employee_signed_in? %>
+            <ul class="navbar-nav">
+              <li class="navbar-item">
+                <%= link_to "ジャンル", admin_genres_path, class: "logo-font" %>
+              </li>
+              <li class="navbar-item">
+                <%= link_to "社内報", admin_in_company_reports_path, class: "logo-font" %>
+              </li>
+              <li class="navbar-item">
+                <%= link_to "商品", admin_items_path, class: "logo-font" %>
+              </li>
+              <li class="navbar-item">
+                <%= link_to "新入社員一覧", member_new_employees_path, class: "logo-font" %>
+              </li>
+              <li class="navbar-item">
+                <%= link_to "先輩社員一覧", member_customers_path, class: "logo-font" %>
+              </li>
+              <li class="navbar-item">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "logo-font" %>
+              </li>
+            </ul>
+
             <!--顧客のログイン状態-->
           <% elsif customer_signed_in? %>
             <ul class="navbar-nav">

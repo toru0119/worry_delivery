@@ -10,11 +10,13 @@
     <div class="row item_lists">
       <% @new_employees.each do |new_employee| %>
         <div class="col-md-3 item_list">
-          <%= attachment_image_tag new_employee, :image, size: "200x150" %>
-          <%= new_employee.name %><br>
+          <%= attachment_image_tag new_employee, :new_employee, size: "200x150", format: 'jpeg', fallback: "no_image.jpg" %>
+          <%= new_employee.full_name %><br>
+          <%= new_employee.full_name_kana %><br>
           <%= new_employee.introduction %>
-          <% if current_new_employee.member? && !current_new_employee?(new_employee) %>
-            <%= link_to "編集する", edit_member_new_employee_path(genre.id), class:"btn btn-success" %>
+          <!--自分のマイページのみ編集ボタンの表示-->
+          <% if new_employee.id == current_new_employee.id %>
+            <%= link_to "編集する", edit_member_new_employee_path(new_employee.id), class:"btn btn-success" %>
           <% end %>
         </div>
       <% end %>
