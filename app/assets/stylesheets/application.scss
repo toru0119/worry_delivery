@@ -15,3 +15,9 @@
  */
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "bootstrap";
+
+.navbar-brand {
+    width: 130px;
+    heigth: 65px;
+}

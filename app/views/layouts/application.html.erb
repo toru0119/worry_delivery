@@ -5,97 +5,108 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="back-image">
-    <div class="for-footer">
-      <header>
-        <!--#管理者がログイン状態-->
-        <nav class="navbar navbar-expand navbar-dark bg-">
-          <% if admin_signed_in? %>
-            <ul class="navbar-nav">
-              <li class="navbar-item">
-                <%= link_to "ジャンル", admin_genres_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "社内報", admin_in_company_reports_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "商品", admin_items_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "新入社員一覧", member_new_employees_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "先輩社員一覧", member_customers_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "logo-font" %>
-              </li>
-            </ul>
+  <body>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+      <header class="shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-white">
+          <div class="container">
+            <img class="navbar-brand" src="/assets/logo.jpg" href="/" alt="WorryDelivery">
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="ナビゲーションの切替">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <!--#管理者がログイン状態-->
+              <% if admin_signed_in? %>
+                <ul class="navbar-nav ml-auto">
+                  <li class="navbar-item">
+                    <%= link_to "ジャンル", admin_genres_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "社内報", admin_in_company_reports_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "商品", admin_items_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "新入社員一覧", member_new_employees_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "先輩社員一覧", member_customers_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                </ul>
 
-        <!--#新入社員がログイン状態-->
-        <nav class="navbar navbar-expand navbar-dark bg-">
-          <% elsif new_employee_signed_in? %>
-            <ul class="navbar-nav">
-              <li class="navbar-item">
-                <%= link_to "ジャンル", admin_genres_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "社内報", admin_in_company_reports_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "商品", admin_items_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "新入社員一覧", member_new_employees_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "先輩社員一覧", member_customers_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "logo-font" %>
-              </li>
-            </ul>
+            <!--#新入社員がログイン状態-->
 
-            <!--顧客のログイン状態-->
-          <% elsif customer_signed_in? %>
-            <ul class="navbar-nav">
-              <li class="navbar-item">
-                <%= link_to "マイページ", customers_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "新入社員一覧", new_employees_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "商品一覧", items_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "カート", cart_items_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "logo-font" %>
-              </li>
-            </ul>
-              <!--ログインされていない場合-->
-          <% else %>
-            <ul class="navbar-nav">
-              <li class="navbar-item p-8">
-                <%= link_to "About", homes_about_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item px-8">
-                <%= link_to "商品一覧", items_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "新規登録", new_customer_registration_path, class: "logo-font" %>
-              </li>
-              <li class="navbar-item">
-                <%= link_to "ログイン", new_customer_session_path, class: "logo-font" %>
-              </li>
-            </ul>
-          <% end %>
+              <% elsif new_employee_signed_in? %>
+                <ul class="navbar-nav ml-auto">
+                  <li class="navbar-item">
+                    <%= link_to "ジャンル", admin_genres_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "社内報", admin_in_company_reports_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "商品", admin_items_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "新入社員一覧", member_new_employees_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "先輩社員一覧", member_customers_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                </ul>
+
+                <!--のログイン状態-->
+              <% elsif customer_signed_in? %>
+                <ul class="navbar-nav ml-auto">
+                  <li class="navbar-item">
+                    <%= link_to "マイページ", customers_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "新入社員一覧", new_employees_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "商品一覧", items_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "カート", cart_items_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                </ul>
+                  <!--ログインされていない場合-->
+              <% else %>
+                <ul class="navbar-nav ml-auto">
+                  <li class="navbar-item">
+                    <%= link_to "About", homes_about_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "商品一覧", items_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "新規登録", new_customer_registration_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                  <li class="navbar-item">
+                    <%= link_to "ログイン", new_customer_session_path, :class => "d-none d-lg-block btn btn-primary rounded-pill" %>
+                  </li>
+                </ul>
+              <% end %>
+            </div>
+          </div>
         </nav>
       </header>
 
@@ -103,9 +114,14 @@
         <%= yield %>
       </main>
 
-      <footer>
-          <p>© 2022 DMMWEBCAMP SatoToru</p>
+      <footer class="border-top">
+        <div class="container footer">
+          <div class="row">
+            <div class="mx-auto">
+              <p>© 2022 DMMWEBCAMP SatoToru</p>
+            </div>
+          </div>
+        </div>
       </footer>
-    </div>
   </body>
 </html>
