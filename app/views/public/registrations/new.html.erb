@@ -1,67 +1,46 @@
-<div class="position-center">
-  <h4><span class="page-title">新規会員登録</span></h4>
-</div>
-<div class="space"></div>
-
-<%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
-<!--エラーメッセージ削除-->
-
-  <table class="table-center table-form">
-    <tbody>
-      <tr>
-        <div class="field">
-          <th><%= f.label :名前 %></th>
-          <th><%= f.label :（姓）%></th>
-          <th><%= f.text_field :last_name, autofocus: true, placeholder: "山田" %></th>
-          <th><%= f.label :（名） %></th>
-          <th><%= f.text_field :first_name, autofocus: true, placeholder: "太郎" %></th>
-        </div>
-      </tr>
-      <tr>
-        <div class="field">
-          <th><%= f.label :フリガナ %></th>
-          <th><%= f.label :（セイ） %></th>
-          <th><%= f.text_field :last_name_kana, autofocus: true, placeholder: "ヤマダ" %></th>
-          <th><%= f.label :（メイ） %></th>
-          <th><%= f.text_field :first_name_kana, autofocus: true, placeholder: "タロウ" %></th>
-        </div>
-      </tr>
-      <tr>
-        <div class="field">
-          <th><%= f.label :メールアドレス %></th>
-          <th></th>
-          <th><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@examole.com" %></th>
-        </div>
-      </tr>
-      <tr>
-        <div class="field">
-          <th> <%= f.label :パスワード %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> 文字以上)</em>
-          <% end %></th>
-          <th></th>
-          <th><%= f.password_field :password, autocomplete: "new-password" %></th>
-        </div>
-      </tr>
-      <tr>
-        <div class="field">
-          <th><%= f.label :パスワード（確認用） %></th>
-          <th></th>
-          <th><%= f.password_field :password_confirmation, autocomplete: "new-password" %></th>
-        </div>
-      </tr>
-      <tr>
-        <div class="actions">
-          <th></th>
-          <th></th>
-          <th><%= f.submit "新規登録", class: "btn btn-success btn-block" %></th>
-        </div>
-      </tr>
-    </tbody>
-  </table>
-<% end %>
-
-<h5><span class="page-sub-title">既に登録済みの社員</span></h5>
-<div class="position-center">
-  <%= render "public/shared/links" %>
+<div class="container">
+  <div class="card-container">
+    <div class="card-body">
+        <form class="form">
+        <legend>新規会員登録</legend>
+          <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-xs-6 col-md-6">
+                  <%= f.text_field :last_name, autofocus: true, placeholder: "姓", class: "form-control input-lg" %>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                  <%= f.text_field :first_name, autofocus: true, placeholder: "名", class: "form-control input-lg" %>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-xs-6 col-md-6">
+                  <%= f.text_field :last_name_kana, autofocus: true, placeholder: "セイ", class: "form-control input-lg"  %>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                  <%= f.text_field :first_name_kana, autofocus: true, placeholder: "メイ", class: "form-control input-lg" %>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@examole.com", class: "form-control input-lg" %>
+            </div>
+            <div class="form-group">
+              <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード(6文字以上)", class: "form-control input-lg" %>
+            </div>
+            <div class="form-group">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード(確認)", class: "form-control input-lg" %>
+            </div>
+            <div class="form-group">
+              <%= f.submit "新規登録", class: "btn btn-lg btn-block signup-btn btn-outline-success" %>
+            </div>
+            <span class="help-block">既に登録済みの社員は<br>
+              <%= render "public/shared/links" %>
+            </span>
+          <% end %>
+        </form>
+    </div>
+  </div>
 </div>
