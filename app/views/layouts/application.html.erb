@@ -27,32 +27,32 @@
             <!--#管理者がログイン状態-->
             <% if admin_signed_in? %>
               <ul class="navbar-nav">
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "ジャンル", admin_genres_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "社内報", admin_in_company_reports_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "商品", admin_items_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "新入社員一覧", member_new_employees_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "先輩社員一覧", member_customers_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
                   </li>
@@ -61,32 +61,32 @@
             <!--#新入社員がログイン状態-->
             <% elsif new_employee_signed_in? %>
               <ul class="navbar-nav">
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "ジャンル", admin_genres_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "社内報", admin_in_company_reports_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "商品", admin_items_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "新入社員一覧", member_new_employees_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "先輩社員一覧", member_customers_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
                   </li>
@@ -95,27 +95,27 @@
             <!--先輩社員のログイン状態-->
             <% elsif customer_signed_in? %>
               <ul class="navbar-nav">
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "マイページ", customers_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "新入社員一覧", new_employees_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "商品一覧", items_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "カート", cart_items_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
                   </li>
@@ -124,24 +124,22 @@
             <!--ログインされていない場合-->
             <% else %>
               <ul class="navbar-nav">
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
-
                       <%= link_to "About", homes_about_path, class: "nav-link" %>
-
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "商品一覧", items_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "新規登録", new_customer_registration_path, class: "nav-link" %>
                   </li>
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "ログイン", new_customer_session_path, class: "nav-link" %>
                   </li>

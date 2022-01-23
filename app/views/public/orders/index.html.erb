@@ -1,29 +1,38 @@
-<div class="position-center">
-  <h4><span class="page-title">注文履歴一覧</span></h4>
+<div class="container border-bottom pt-5">
+  <h4>
+    注文履歴
+  </h4>
 </div>
-<div class="space"></div>
 
-<table class="table-center">
-  <thead>
+<div class="container mt-3">
+  <div class="bd-example pt-5">
+  <table class="table table-striped">
+    <thead>
     <tr>
-      <th class="th-color column-narrow">注文日</th>
-      <th class="th-color column-narrow">注文商品</th>
-      <th class="th-color column-narrow">ステータス</th>
+      <th scope="col">注文日</th>
+      <th scope="col">注文商品</th>
+      <th scope="col">ステータス</th>
+      <th scope="col"></th>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
     <% @orders.each do |order| %>
+    <tbody>
       <tr>
-        <td class="text-center"><%= order.created_at.strftime("%Y/%m/%d") %></td>
+        <th scope="row"><%= cart_item.item.name %></th>
+          <td>
+            <%= order.created_at.strftime("%Y/%m/%d") %>
+          </td>
+          <td>
+            <% order.order_lists.each do |order_list| %>
+              <%= order_list.item.name %><br>
+            <% end %>
+          </td>
         <td>
-          <% order.order_lists.each do |order_list| %>
-            <%= order_list.item.name %><br>
-          <% end %>
+          <%= order.order_status_i18n %>
         </td>
-        <td class="text-center"><%= order.order_status_i18n %></td>
-        <td class="text-center"><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
       </tr>
-      <!--配達員が誰だったのか表示-->
+    </tbody>
     <% end %>
-  </tbody>
-</table>
+  </table>
+  </div>
+</div>
