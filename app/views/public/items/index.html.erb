@@ -8,29 +8,30 @@
     </div>
 </section>
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <% @items.each do |item| %>
-        <div class="col">
-          <div class="card shadow-sm">
-            <%= attachment_image_tag item, :image, fallback: "nophoto_thumbnail.png", size: "170x150", class: "bd-placeholder-img card-img-top" %>
-            <div class="card-body">
-              <p class="card-text"><%= item.name %></p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <%= form_with model: @cart_item, url: cart_items_path, local:true do |f| %>
-                    <%= f.hidden_field :item_id, value: item.id %>
-                    <%= f.select :amount, options_for_select(((1..10).to_a)), include_blank: "個数選択" %>
-                    <%= f.submit "カートに入れる" %>
-                  <% end %>
-                </div>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-4">
+      <% @items.each do |item| %>
+      <div class="col">
+        <div class="card shadow-sm">
+          <%= attachment_image_tag item, :image, fallback: "nophoto_thumbnail.png", size: "170x150", class: "bd-placeholder-img card-img-top border-bottom" %>
+          <div class="card-body">
+            <p class="card-text"><%= item.name %></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <%= form_with model: @cart_item, url: cart_items_path, local:true do |f| %>
+                  <%= f.hidden_field :item_id, value: item.id %>
+                  <%= f.select :amount, options_for_select(((1..10).to_a)), include_blank: "個数選択" %>
+                  <div class="btn-group btn-group-sm pt-2">
+                    <%= f.submit "カートに入れる", class: "btn btn-outline-success" %>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
         </div>
-        <% end %>
       </div>
+      <% end %>
     </div>
   </div>
 </div>

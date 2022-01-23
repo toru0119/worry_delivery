@@ -1,12 +1,37 @@
-  <div class="row">
+  <div class="container">
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+      <div class="col-md-12 px-0">
+        <h1 class="display-4 fst-italic">ジャンルの新規登録・一覧！</h1>
+        <p class="lead my-3">新しいジャンルの追加やジャンルの編集ができます。</p>
+      </div>
+    </div>
+  </div>
 
+<div class="text-center">
+  <img class="navbar-brand" src="/assets/logo.jpg" href="/" alt="WorryDelivery">
+    <h1 class="h4 mb-3 fw-normal">ジャンル追加</h1>
+    <div class="container">
+        <div class="col-3">
+          <%=form_with model: @genre, url: admin_genres_path, local: true do |f| %>
+          <div class="form-floating">
+            <div class="mx-auto">
+              <%= f.text_field :name, placeholder: "ジャンル名" %>
+            </div>
+          </div>
+          <%= f.submit '新規登録', class: "btn btn-success offset-1" %>
+          <% end %>
+        </div>
+
+    </div>
+</div>
+
+  <div class="row">
     <div class="col-2"></div>
     <div class="col-7">
       <h1>ジャンル追加</h1>
       <!--ジャンルの新規登録機能-->
       <%=form_with model: @genre, url: admin_genres_path, local: true do |f| %>
-        <h2>ジャンル名</h2>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, placeholder: "ジャンル名" %>
         <%= f.submit '新規登録', class: "btn btn-success offset-1" %>
       <% end %>
       <!--end-->

@@ -1,45 +1,101 @@
-<h1>商品新規登録</h1>
-<%= form_with model: @item, url: admin_items_path, local:true do |f| %>
-  <h4>画像</h4>
-  <%= f.attachment_field :image %>
+<div class="container">
+  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+    <div class="col-md-12 px-0">
+      <h1 class="display-4 fst-italic">先輩社員と是非、交流を！</h1>
+      <p class="lead my-3">入社おめでとうございます！今後の活躍に期待しております。</p>
+    </div>
+  </div>
 
-  <h4>商品名</h4>
-  <%= f.text_field :name %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="position-sticky" style="top: 2rem;">
+        <div class="p-4 mb-3 bg-light rounded">
+          <h4 class="fst-italic">商品新規登録</h4>
+        </div>
+        <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
+        <div class="p-4">
+          <h6 class="fst-italic">商品画像</h6>
+          <div class="list-unstyled mb-0">
+            <%= f.attachment_field :image %>
+          </div>
+        </div>
 
-  <h4>ジャンル</h4>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank:"-- 選択してください --" %>
+        <div class="p-4">
+          <h6 class="fst-italic">商品名</h6>
+          <div class="list-unstyled mb-0">
+            <%= f.text_field :name %>
+          </div>
+        </div>
 
-  <h4>販売ステータス</h4>
-  <%= f.radio_button :is_active, :true %>
-  <%= f.label :"販売中" %>
-  <%= f.radio_button :is_active, :false %>
-  <%= f.label :"販売停止中" %>
+        <div class="p-4">
+          <h6 class="fst-italic">ジャンル</h6>
+          <div class="list-unstyled">
+            <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank:"-- 選択してください --" %>
+          </div>
+        </div>
 
-  <%= f.submit '新規登録' %>
+        <div class="p-4">
+          <h6 class="fst-italic">販売ステータス</h6>
+          <div class="list-unstyled">
+            <%= f.radio_button :is_active, :true %>
+            <%= f.label :"販売中" %>
+            <%= f.radio_button :is_active, :false %>
+            <%= f.label :"販売停止中" %>
+          </div>
+        </div>
+        <div class="px-5 text-right">
+          <%= f.submit '新規登録', class: "btn btn-outline-success" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
 
-<% end %>
-
-<h1>商品一覧</h1>
-<% @items.each do |item| %>
-  <p>商品画像<%= attachment_image_tag item, :image, format: 'jpeg', size: "200x150" %><br></p>
-
-  <p>商品名<%= link_to item.name, admin_items_path %></p>
-
-  <p>ジャンル<%= item.genre.name %></p>
-
-  <p>販売ステータス<% if item.is_active? == false %>
-    <span>販売中</span>
-  <% else %>
-    <span>販売停止中</span>
-  <% end %>
-    <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
-      <%= f.label :販売ステータス %>
-      <%=f.radio_button :is_active, :true %>
-      <span>販売中</span>
-      <%=f.radio_button :is_active, :false %>
-      <span> 販売中止中</span>
-      <%= f.submit "変更を保存", class: "btn btn-success" %>
-    <% end %>
-  </p>
-
- <% end %>
+    <div class="col-md-8">
+      <h3 class="pb-4 mb-4 fst-italic border-bottom">
+        商品一覧
+      </h3>
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            <% @items.each do |item| %>
+            <div class="col">
+              <div class="card shadow-sm mt-3">
+                <%= attachment_image_tag item, :image, fallback: "nophoto_thumbnail.png", size: "170x150", class: "bd-placeholder-img card-img-top border-bottom" %>
+                <div class="card-body">
+                  <p class="card-text"><%= item.name %></p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="card-text">
+                      <% if item.is_active? == false %>
+                        <span>販売中</span>
+                      <% else %>
+                        <span>販売停止中</span>
+                      <% end %>
+                    </div>
+                  </div>
+                  <!--編集画面作成しないとできないかも-->
+                  <div class="card-footer text-muted">
+                    <h6 class="fst-italic">販売ステータス</h6>
+                    <div class="list-unstyled">
+                      <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
+                        <%= f.radio_button :is_active, :true %>
+                        <%= f.label :"販売中" %></br>
+                        <%= f.radio_button :is_active, :false %>
+                        <%= f.label :"販売停止中" %>
+                        <div class="text-right">
+                          <div class="btn-group btn-group-sm">
+                            <%= f.submit "変更を保存", class: "btn btn-outline-primary" %>
+                          </div>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
