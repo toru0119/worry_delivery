@@ -1,7 +1,6 @@
 <div class="container">
   <div class="card-container">
     <div class="card-body">
-        <form class="form">
         <legend>ログイン</legend>
           <%= form_with model: @new_employee, url: new_employee_session_path, local: true do |f| %>
             <div class="form-group">
@@ -17,7 +16,6 @@
               <%= render "member/shared/links" %>
             </span>
           <% end %>
-        </form>
     </div>
   </div>
 </div>

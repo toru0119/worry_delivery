@@ -1,7 +1,6 @@
 <div class="container" id="wrap">
   <div class="card-container">
     <div class="card-body">
-        <form class="form">
         <legend>管理者ログイン</legend>
           <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
             <div class="form-group">
@@ -14,7 +13,6 @@
               <%= f.submit "ログイン", class: "btn btn-lg btn-block signup-btn btn-outline-success" %>
             </div>
           <% end %>
-        </form>
     </div>
   </div>
 </div>

@@ -1,7 +1,6 @@
 <div class="container">
   <div class="card-container">
     <div class="card-body">
-        <form class="form">
         <legend>新規会員登録</legend>
           <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
             <div class="form-group">
@@ -40,7 +39,6 @@
               <%= render "public/shared/links" %>
             </span>
           <% end %>
-        </form>
     </div>
   </div>
 </div>
