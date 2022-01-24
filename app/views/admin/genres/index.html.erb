@@ -1,62 +1,35 @@
-  <div class="container">
-    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-      <div class="col-md-12 px-0">
-        <h1 class="display-4 fst-italic">ジャンルの新規登録・一覧！</h1>
-        <p class="lead my-3">新しいジャンルの追加やジャンルの編集ができます。</p>
+<div class="container py-4">
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">ジャンルの追加・一覧</h1>
+        <p class="col-md-8 fs-4">新しいジャンルの追加やジャンルが一覧で見れるようになってます。</p>
       </div>
     </div>
-  </div>
 
-<div class="text-center">
-  <img class="navbar-brand" src="/assets/logo.jpg" href="/" alt="WorryDelivery">
-    <h1 class="h4 mb-3 fw-normal">ジャンル追加</h1>
-    <div class="container">
-        <div class="col-3">
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <h3>ジャンル追加</h3>
           <%=form_with model: @genre, url: admin_genres_path, local: true do |f| %>
-          <div class="form-floating">
-            <div class="mx-auto">
+          <div class="my-5">
               <%= f.text_field :name, placeholder: "ジャンル名" %>
-            </div>
+              <%= f.submit '新規登録', class: "btn btn-outline-light offset-1" %>
           </div>
-          <%= f.submit '新規登録', class: "btn btn-success offset-1" %>
           <% end %>
         </div>
-
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h3>ジャンル一覧</h3>
+          <div class="container">
+            <div class="row">
+              <% @genres.each do |genre| %>
+              <div class="col-md-6 mt-3"><%= genre.name %></div>
+              <div class="col-md-6 mt-3"><%= link_to "編集する", edit_admin_genre_path(genre.id), class:"btn btn-outline-success offset-1" %></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-
-  <div class="row">
-    <div class="col-2"></div>
-    <div class="col-7">
-      <h1>ジャンル追加</h1>
-      <!--ジャンルの新規登録機能-->
-      <%=form_with model: @genre, url: admin_genres_path, local: true do |f| %>
-        <%= f.text_field :name, placeholder: "ジャンル名" %>
-        <%= f.submit '新規登録', class: "btn btn-success offset-1" %>
-      <% end %>
-      <!--end-->
-      <table>
-        <thead>
-          <tr>
-            <th>ジャンル一覧</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <!--ジャンル一覧-->
-         <% @genres.each do |genre| %>
-         <tr>
-           <td>
-            <%= genre.name %>
-           </td>
-           <td>
-          <%= link_to "編集する", edit_admin_genre_path(genre.id), class:"btn btn-success" %>
-         <% end %>
-           </td>
-         </tr>
-         <!--end-->
-        </tbody>
-      </table>
-    </div>
-    <div class="col-3"></div>
   </div>

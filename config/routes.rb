@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     root 'homes#top'
     resources :items, only: [:index, :create, :update]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :in_company_reports, only: [:index, :edit, :destroy]
+    resources :in_company_reports, only: [:index, :create, :edit, :update]
   end
 
   devise_for :new_employee,skip: [:passwords,], controllers: {

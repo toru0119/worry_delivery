@@ -1,37 +1,37 @@
-  <div class="row">
-
-    <div class="col-2"></div>
-    <div class="col-7">
-      <h1>社内報追加</h1>
-      <!--社内報の新規登録機能-->
-      <%=form_with model: @in_company_report, url: admin_in_company_reports_path, local: true do |f| %>
-        <h2>社内報</h2>
-        <%= f.text_field :body %>
-        <%= f.submit '新規登録', class: "btn btn-success offset-1" %>
-      <% end %>
-      <!--end-->
-      <table>
-        <thead>
-          <tr>
-            <th>社内報一覧</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <!--社内報一覧-->
-         <% @in_company_reports.each do |in_company_report| %>
-         <tr>
-           <td>
-            <%= in_company_report.body %>
-           </td>
-           <td>
-          <%= link_to "編集する", edit_admin_in_company_report(in_company_report.id), class:"btn btn-success" %>
-         <% end %>
-           </td>
-         </tr>
-         <!--end-->
-        </tbody>
-      </table>
+ <div class="container py-4">
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">社内報の追加・一覧</h1>
+        <p class="col-md-8 fs-4">新しい社内報の追加や社内報が一覧で見れるようになってます。</p>
+      </div>
     </div>
-    <div class="col-3"></div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <h3>社内報追加</h3>
+          <%=form_with model: @in_company_report, url: admin_in_company_reports_path, local: true do |f| %>
+          <div class="my-5">
+              <%= f.text_area :body %>
+              <%= f.submit '新規登録', class: "btn btn-outline-light offset-1" %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-md-stretch">
+      <% @in_company_reports.each do |in_company_report| %>
+      <div class="col-md-6 pt-4">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h3>社内報一覧</h3>
+          <div class="container">
+            <div class="row">
+              <div class="col-12 mt-3"><p><%= in_company_report.body %></p></div>
+              <div class="col-12 mt-3"><%= link_to "編集する", edit_admin_in_company_report_path(in_company_report.id), class:"btn btn-success" %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>

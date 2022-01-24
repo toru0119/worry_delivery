@@ -1,26 +1,30 @@
-<div class="container px-2">
-
-  <div class="row justify-content-center">
-    <div class="col-md-2.5 ribbon2">
-      <h3>新入社員一覧</h3>
+<div class="container">
+  <div class="d-flex align-items-center p-1 rounded shadow-sm">
+    <img class="me-3" src="/assets/logo_simple.jpg" alt="" width="60" height="60">
+    <div class="mt-4">
+      <p>同期とはかけがえのない存在です。切磋琢磨し合いながら成長していきましょう！</p>
     </div>
   </div>
-
-  <div class="col-md-9 offset-md-1">
-    <div class="row item_lists">
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+      <h3 class="border-bottom pb-2 mb-0">新入社員</h3>
       <% @new_employees.each do |new_employee| %>
-        <div class="col-md-3 item_list">
-          <%= attachment_image_tag new_employee, :new_employee, size: "200x150", format: 'jpeg', fallback: "no_image.jpg" %>
-          <%= new_employee.full_name %><br>
-          <%= new_employee.full_name_kana %><br>
+      <div class="d-flex text-muted pt-3">
+
+        <svg class="bd-placeholder-img" width="32" height="32" role="img">
+          <%= attachment_image_tag new_employee, :new_employee, size: "32x32", format: 'jpeg', fallback: "no_image.jpg" %>
+        </svg>
+
+        <p class="pb-3 mb-0 mx-1 small lh-sm border-bottom">
+          <strong class="d-block text-gray-dark"><%= new_employee.full_name %> (<%= new_employee.full_name_kana %>)</strong>
           <%= new_employee.introduction %>
-          <!--自分のマイページのみ編集ボタンの表示-->
+        </p>
+        <div class="pb-3 mb-0 mx-1 small lh-sm border-bottom">
           <% if new_employee.id == current_new_employee.id %>
-            <%= link_to "編集する", edit_member_new_employee_path(new_employee.id), class:"btn btn-success" %>
+            <%= link_to "編集", edit_member_new_employee_path(new_employee.id), class:"btn btn-outline-success" %>
           <% end %>
         </div>
+      </div>
       <% end %>
     </div>
   </div>
-
 </div>

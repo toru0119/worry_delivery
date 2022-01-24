@@ -36,10 +36,10 @@
     </div>
   </div>
   　<div class="col-md-9 offset-md-1">
-      <div class="row">
+      <div class="row ">
         <!--表示件数の制限-->
         <% @items.last(4).reverse.each do |item| %>
-              <div class="card" style="width: 15rem;">
+              <div class="card m-2" style="width: 15rem;">
                   <%= attachment_image_tag item, :image, format: 'jpeg', size: "150x200", class: "card-img-top" %>
                   <div class="card-body">
                     <p class="card-text"><%= item.name %></p>
