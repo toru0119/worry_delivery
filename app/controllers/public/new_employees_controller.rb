@@ -1,5 +1,5 @@
 class Public::NewEmployeesController < ApplicationController
   def index
-    @new_employees = new_employee.all
+    @new_employee = NewEmployee.all
   end
 end

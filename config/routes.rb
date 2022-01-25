@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :create, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :in_company_reports, only: [:index, :create, :edit, :update]
+    resources :new_employees, only: [:index]
   end
 
   devise_for :new_employee,skip: [:passwords,], controllers: {
