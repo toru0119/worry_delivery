@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :customer,skip: [:passwords,], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
+    get '/search' => 'searches#search'
     resources :items, only: [:index]
     resources :new_employees, only: [:index]
     resources :cart_items, only: [:index, :create, :update, :destroy] do
@@ -14,7 +16,7 @@ Rails.application.routes.draw do
     end
     resources :orders, only: [:new, :create, :index] do
       post 'order/create' => 'order#create'
-      post 'orders/complete' => 'orders#complete', on: :collection
+      get 'orders/complete' => 'orders#complete', on: :collection
     end
     resource :customers, only: [:show, :edit, :update] do
       # patch 'customers/withdraw' => 'customers#withdraw', on: :collection

@@ -13,7 +13,7 @@ class Member::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     if @order.update(order_params)
       flash[:notice] = 'You have updated order successfully.'
-      redirect_to admin_order_path
+      redirect_to member_orders_path
     else
       render :show
     end

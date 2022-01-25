@@ -1,7 +1,45 @@
 <!--レイアウト考え中-->
-  <% @in_company_reports.each do |in_company_report| %>
-      <%= in_company_report.body %>
-  <% end %>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <% @in_company_reports.drop(1).count.times do |in_company_report| %>
+      <li data-target="#carouselExampleIndicators" data-slide-to="#{index}"></li>
+    <% end %>
+  </ol>
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <% @in_company_reports.first(1).each do |in_company_report| %>
+        <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+              <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light"><%= in_company_report.body %></h1>
+              </div>
+            </div>
+        </section>
+      <% end %>
+    </div>
+    <% @in_company_reports.drop(1).each do |in_company_report| %>
+      <div class="carousel-item">
+        <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+              <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light"><%= in_company_report.body %></h1>
+              </div>
+            </div>
+        </section>
+      </div>
+    <% end %>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
   <!--商品一覧-->
   <div class="top-comment">

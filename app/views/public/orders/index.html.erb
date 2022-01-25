@@ -15,20 +15,21 @@
       <th scope="col"></th>
     </tr>
     </thead>
-    <% @orders.each do |order| %>
+    <% @order_details.each do |order| %>
     <tbody>
       <tr>
-        <th scope="row"><%= cart_item.item.name %></th>
+        <th scope="row">
+          <%= order.item.name %>
+        </th>
           <td>
             <%= order.created_at.strftime("%Y/%m/%d") %>
           </td>
           <td>
-            <% order.order_lists.each do |order_list| %>
-              <%= order_list.item.name %><br>
-            <% end %>
+
           </td>
         <td>
-          <%= order.order_status_i18n %>
+          <%= order.order_status %>
+
         </td>
       </tr>
     </tbody>
