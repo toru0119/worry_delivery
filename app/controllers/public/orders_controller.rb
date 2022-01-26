@@ -33,12 +33,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @order_details = OrderDetail.all
+    @orders = current_customer.orders.all
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:new_employee, :name, :addresses)
+    params.require(:order).permit(:new_employee, :name, :addresses, :order_status)
   end
 end

@@ -5,3 +5,7 @@
           seat1: "席番1"
           seat2: "席番2"
           seat3: "席番3"
+        order_status:
+          making: "製作中"
+          preparing: "発送準備中"
+          shipped: "発送済"

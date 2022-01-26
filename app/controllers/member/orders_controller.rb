@@ -12,7 +12,6 @@ class Member::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
-      flash[:notice] = 'You have updated order successfully.'
       redirect_to member_orders_path
     else
       render :show
@@ -22,6 +21,6 @@ class Member::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:status)
+    params.require(:order).permit(:order_status)
   end
 end
