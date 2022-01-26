@@ -23,9 +23,10 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+
             <!--#管理者がログイン状態-->
             <% if admin_signed_in? %>
+            <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
@@ -54,12 +55,26 @@
                 </button>
                 <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
+                      <%= link_to "注文", member_orders_path, class: "nav-link" %>
+                  </li>
+                </button>
+                <button type="button" class="btn btn-outline-secondary mx-1">
+                  <li class="nav-item">
                       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
                   </li>
                 </button>
               </ul>
+            </div>
+              <!--検索フォーム-->
+              <div class="nav-item navbar-collapse text-right">
+              <%= form_with url: member_search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :keyword %>
+                <%= f.submit '検索', class: "btn btn-outline-info" %>
+              <% end %>
+              </div>
             <!--#新入社員がログイン状態-->
             <% elsif new_employee_signed_in? %>
+            <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
@@ -88,12 +103,25 @@
                 </button>
                 <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
+                      <%= link_to "注文", member_orders_path, class: "nav-link" %>
+                  </li>
+                </button>
+                <button type="button" class="btn btn-outline-secondary mx-1">
+                  <li class="nav-item">
                       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
                   </li>
                 </button>
               </ul>
+            </div>
+            <!--検索フォーム-->
+              <div class="nav-item navbar-collapse text-right">
+              <%= form_with url: member_search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :keyword %>
+                <%= f.submit '検索', class: "btn btn-outline-info" %>
+              <% end %>
             <!--先輩社員のログイン状態-->
             <% elsif customer_signed_in? %>
+            <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
@@ -120,15 +148,17 @@
                       <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
                   </li>
                 </button>
-                  <li class="nav-item ">
-                  <%= form_with url: search_path, method: :get, local: true do |f| %>
-                    <%= f.text_field :keyword %>
-                    <%= f.submit '検索', class: "btn btn-outline-info" %>
-                  <% end %>
-                  </li>
               </ul>
+            </div>
+            <!--検索フォーム-->
+              <div class="nav-item navbar-collapse text-right">
+              <%= form_with url: search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :keyword %>
+                <%= f.submit '検索', class: "btn btn-outline-info" %>
+              <% end %>
             <!--ログインされていない場合-->
             <% else %>
+            <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
@@ -151,8 +181,8 @@
                   </li>
                 </button>
               </ul>
+            </div>
             <% end %>
-          </div>
       </nav>
     </header>
       <main>

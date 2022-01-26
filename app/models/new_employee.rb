@@ -14,4 +14,12 @@ class NewEmployee < ApplicationRecord
   def full_name_kana
     self.last_name_kana + " " + self.first_name_kana
   end
+
+  def self.search(search)
+    if search != ""
+      NewEmployee.where('last_name LIKE(?) OR first_name LIKE(?) OR last_name_kana LIKE(?) OR first_name_kana LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+    else
+      NewEmployee.all
+    end
+  end
 end

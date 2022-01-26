@@ -1,22 +1,19 @@
-<section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">検索結果です！</h1>
-        <!--画像挿入-->
-        <p class="lead text-muted">新入社員と是非コミュニケーションを！！</p>
-      </div>
+<div class="container">
+  <div class="d-flex align-items-center p-1 rounded shadow-sm">
+    <img class="me-3" src="/assets/logo_simple.jpg" alt="" width="60" height="60">
+    <div class="mt-4">
+      <p>同期とはかけがえのない存在です。切磋琢磨し合いながら成長していきましょう！</p>
     </div>
-</section>
+  </div>
+</div>
 <div class="container">
   <div class="my-3 p-3 bg-body rounded shadow-sm">
       <h3 class="border-bottom pb-2 mb-0">先輩社員</h3>
       <% @customers.each do |customer| %>
       <div class="d-flex text-muted pt-3">
-
         <svg class="bd-placeholder-img" width="32" height="32" role="img">
             <%= attachment_image_tag customer, :customer, size: "32x32", format: 'jpeg', fallback: "no_image.jpg" %>
         </svg>
-
         <p class="pb-3 mb-0 mx-1 small lh-sm border-bottom">
           <%= link_to member_customer_path(customer.id) do %>
           <strong class="d-block text-gray-dark">

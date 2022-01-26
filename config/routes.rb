@@ -19,7 +19,6 @@ Rails.application.routes.draw do
       get 'orders/complete' => 'orders#complete', on: :collection
     end
     resource :customers, only: [:show, :edit, :update] do
-      # patch 'customers/withdraw' => 'customers#withdraw', on: :collection
     end
   end
 
@@ -42,6 +41,7 @@ Rails.application.routes.draw do
 
   namespace :member do
     root 'homes#top'
+    get '/search' => 'searches#search'
     resources :new_employees, only: [:index, :edit, :update]
     resources :customers, only: [:index, :show]
     resources :orders, only: [:index, :show, :update]
