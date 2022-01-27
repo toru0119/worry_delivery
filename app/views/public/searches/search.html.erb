@@ -1,0 +1,51 @@
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">検索結果です！</h1>
+        <!--画像挿入-->
+        <p class="lead text-muted">新入社員と是非コミュニケーションを！！</p>
+      </div>
+    </div>
+</section>
+<div class="container">
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+      <h3 class="border-bottom pb-2 mb-0">先輩社員</h3>
+      <% @customers.each do |customer| %>
+      <div class="d-flex text-muted pt-3">
+
+        <svg class="bd-placeholder-img" width="32" height="32" role="img">
+            <%= attachment_image_tag customer, :customer, size: "32x32", format: 'jpeg', fallback: "no_image.jpg" %>
+        </svg>
+
+        <p class="pb-3 mb-0 mx-1 small lh-sm border-bottom">
+          <%= link_to member_customer_path(customer.id) do %>
+          <strong class="d-block text-gray-dark">
+            <%= customer.full_name %> (<%= customer.full_name_kana %>)
+          </strong>
+          <% end %>
+          <%= customer.business_outline %>
+        </p>
+      </div>
+      <% end %>
+    </div>
+
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+      <h3 class="border-bottom pb-2 mb-0">新入社員</h3>
+      <% @new_employees.each do |new_employee| %>
+      <div class="d-flex text-muted pt-3">
+
+        <svg class="bd-placeholder-img" width="32" height="32" role="img">
+            <%= attachment_image_tag new_employee, :new_employee, size: "32x32", format: 'jpeg', fallback: "no_image.jpg" %>
+        </svg>
+
+        <p class="pb-3 mb-0 mx-1 small lh-sm border-bottom">
+          <strong class="d-block text-gray-dark">
+            <%= new_employee.full_name %> (<%= new_employee.full_name_kana %>)
+          </strong>
+          <%= new_employee.introduction %>
+        </p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

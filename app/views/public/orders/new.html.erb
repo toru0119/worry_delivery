@@ -1,10 +1,5 @@
+<div class="col-xs-4">お届け先</div>
 <%= form_with model:@order, url: orders_path, local:true do |f| %>
- 	<div class="col-xs-4">お届け先</div>
-  <div class="col-xs-6">
-    <%= f.select :address, Order.addresses_i18n.invert %>
-  </div>
-
-  <div class="actions">
-    <div class="col-xs-2"><%= f.submit '更新'  ,class: "btn btn-primary" %></div>
-  </div>
+<%= f.select :address, Order.addresses_i18n.invert %>
+<%= f.submit '更新'  ,class: "btn btn-outline-primary" %>
 <% end %>

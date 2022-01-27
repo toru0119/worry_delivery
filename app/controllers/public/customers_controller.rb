@@ -1,6 +1,4 @@
 class Public::CustomersController < ApplicationController
-  # before_action :correct_customers, only: [:edit, :update]
-  # showも他のユーザーにはいられないようにするには？
   def show
     @customer = current_customer
   end

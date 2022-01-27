@@ -1,23 +1,31 @@
-<h2>マイページ</h2>
-<table class="table">
-  <tbody>
-    <tr><%= attachment_image_tag @customer, :customer, :size, "63x63", format: 'jpeg', fallback: "no_image.jpg" %></tr>
-    <tr>
-      <th>名前</th>
-      <th><%= @customer.full_name %></th>
-    </tr>
-    <tr>
-      <th>カナ</th>
-      <th><%= @customer.full_name_kana %></th>
-    </tr>
-    <tr>
-      <th>業務内容</th>
-      <th><%= @customer.business_outline %></th>
-    </tr>
-  </tbody>
-    <div class="row">
-      <%= link_to edit_customers_path(@customer.id) do %>
-        <p>設定</p>
-      <% end %>
+<div class="container border-bottom pt-5">
+  <h4>
+    マイページ
+  </h4>
+</div>
+  <div class="container p-5">
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <div class="customer-image"><%= attachment_image_tag @customer, :customer, format: 'jpeg', fallback: "no_image.jpg" %></div> 
+          <div class="container">
+            <div class="row mt-2">
+              <button class="btn btn-light" type="button">
+                <%= link_to "編集", edit_customers_path(@customer.id), class: "text-secondary" %>
+              </button>
+              <button class="btn btn-light mx-1" type="button">
+                <!--商品履歴に遷移-->
+                <%= link_to "注文履歴", orders_path, class: "text-secondary" %>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2><%= @customer.full_name %></h2><p>(<%= @customer.full_name_kana %>)</p>
+          <p><%= @customer.business_outline %></p>
+        </div>
+      </div>
     </div>
-</table>
+  </div>

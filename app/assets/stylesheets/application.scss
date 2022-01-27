@@ -21,3 +21,37 @@
     width: 130px;
     heigth: 65px;
 }
+
+.mt-auto,
+.my-auto {
+  margin-top: auto !important;
+}
+
+.py-3 {
+  padding-bottom: 1rem rem !important;
+}
+
+.py-3 {
+  padding-top: 1rem !important;
+}
+.card-container {
+  max-width: 600px;
+  padding: 40px 40px;
+}
+
+.card-body {
+  padding: 20px 25px 20px;
+  margin: 0 auto;
+}
+
+.card-container {
+  margin: 0 auto;
+  margin: 0 auto 25px;
+  margin-top: 45px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+}
+.form-group {
+  margin-top: 10px;
+}

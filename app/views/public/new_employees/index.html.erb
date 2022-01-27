@@ -1,21 +1,28 @@
-<div class="container px-2">
-
-  <div class="row justify-content-center">
-    <div class="col-md-2.5 ribbon2">
-      <h3>新入社員一覧</h3>
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">新入社員紹介</h1>
+        <!--画像挿入-->
+        <p class="lead text-muted">商品は全商品無料です。</br>新入社員と是非コミュニケーションを！！</p>
+      </div>
     </div>
-  </div>
+</section>
+<div class="container">
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+      <h3 class="border-bottom pb-2 mb-0">新入社員</h3>
+      <% @new_employee.each do |new_employee| %>
+      <div class="d-flex text-muted pt-3">
 
-  <div class="col-md-9 offset-md-1">
-    <div class="row item_lists">
-      <% @new_employees.each do |new_employee| %>
-        <div class="col-md-3 item_list">
-          <%= attachment_image_tag new_employee, :image, size: "200x150" %>
-          <%= new_employee.name %><br>
+        <svg class="bd-placeholder-img" width="32" height="32" role="img">
+          <%= attachment_image_tag new_employee, :new_employee, size: "32x32", format: 'jpeg', fallback: "no_image.jpg" %>
+        </svg>
+
+        <p class="pb-3 mb-0 mx-1 small lh-sm border-bottom">
+          <strong class="d-block text-gray-dark"><%= new_employee.full_name %> (<%= new_employee.full_name_kana %>)</strong>
           <%= new_employee.introduction %>
-        </div>
+        </p>
+      </div>
       <% end %>
     </div>
   </div>
-
 </div>

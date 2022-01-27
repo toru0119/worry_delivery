@@ -1,9 +1,17 @@
-<div class = "container">
+<div class="container">
+  <div class="d-flex align-items-center p-1 rounded shadow-sm">
+    <img class="me-3" src="/assets/logo_simple.jpg" alt="" width="60" height="60">
+    <div class="mt-4">
+      <p>先輩社員と交流していきましょう！</p>
+    </div>
+  </div>
+</div>
+
+<div class = "container pt-3">
   <div class = "row">
     <div class = "col">
       <h4 class = "col-3 text-center" style = "background-color:lightgray">注文履歴一覧</h4>
       <table class = "table table-hover">
-
         <thead class = "thead-light">
           <tr>
             <th>購入日時</th>
@@ -12,11 +20,10 @@
             <th>注文ステータス</th>
           </tr>
         </thead>
-
         <% @orders.each do |order| %>
         <tbody>
           <tr>
-            <td><%= link_to order.created_at.strftime('%Y/%m/%d'), admin_order_path(order.id) %></td>
+            <td><%= link_to order.created_at.strftime('%Y/%m/%d  %H:%M'), member_order_path(order.id) %></td>
             <td><%= order.customer.full_name %></td>
             <td><%= order.order_details.sum(:amount) %></td>
             <td><%= order.order_status_i18n %></td>
@@ -24,9 +31,6 @@
           <% end %>
         </tbody>
       </table>
-      <div class="col-3 mx-auto">
-        <strong><%= paginate @order %></strong>
-      </div>
     </div>
   </div>
 </div>

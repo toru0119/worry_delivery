@@ -6,6 +6,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to admin_items_path, notice: "商品の追加完了!"
@@ -32,6 +33,6 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :name, :genre_id)
+    params.require(:item).permit(:image, :name, :genre_id, :is_active)
   end
 end

@@ -1,18 +1,27 @@
-<h2>先輩社員詳細</h2>
-<table class="table">
-  <tbody>
-    <tr><%= attachment_image_tag @customer, :customer, :size, "63x63", format: 'jpeg', fallback: "no_image.jpg" %></tr>
-    <tr>
-      <th>名前</th>
-      <th><%= @customer.full_name %></th>
-    </tr>
-    <tr>
-      <th>カナ</th>
-      <th><%= @customer.full_name_kana %></th>
-    </tr>
-    <tr>
-      <th>業務内容</th>
-      <th><%= @customer.business_outline %></th>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="d-flex align-items-center p-1 rounded shadow-sm">
+    <img class="me-3" src="/assets/logo_simple.jpg" alt="" width="60" height="60">
+    <div class="mt-4">
+      <p>先輩社員と交流していきましょう！</p>
+    </div>
+  </div>
+</div>
+  <div class="container p-5">
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <div class="customer-image"><%= attachment_image_tag @customer, :customer, format: 'jpeg', fallback: "no_image.jpg" %></div>
+          <div class="container">
+            <div class="row mt-2">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2><%= @customer.full_name %></h2><p>(<%= @customer.full_name_kana %>)</p>
+          <p><%= @customer.business_outline %></p>
+        </div>
+      </div>
+    </div>
+  </div>
