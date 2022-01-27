@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
   def create
     # binding.pry
     @order = Order.new
-    @order.address_id = params[:order][:addresses]
+    @order.address = params[:order][:address]
     @order.customer_id = current_customer.id
     if @order.save
       # 注文詳細の作成
@@ -39,6 +39,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:new_employee, :name, :addresses, :order_status)
+    params.require(:order).permit(:new_employee, :address, :order_status)
   end
 end
