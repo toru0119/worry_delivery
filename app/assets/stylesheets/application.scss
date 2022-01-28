@@ -17,6 +17,11 @@
 @import "font-awesome";
 @import "bootstrap";
 
+.logo {
+  background-image: image-url('logo.jpg');
+  background-image: image-url('logo_image.jpg');
+}
+
 .navbar-brand {
     width: 130px;
     heigth: 65px;
