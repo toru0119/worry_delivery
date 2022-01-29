@@ -65,7 +65,7 @@ class Member::RegistrationsController < Devise::RegistrationsController
 
   # 新入社員新規登録後の遷移先。ゆくゆくは注文履歴一覧に設定
   def after_sign_up_path_for(resource)
-     member_new_employees_path
+     member_orders_path
   end
 
   def configure_sign_up_params

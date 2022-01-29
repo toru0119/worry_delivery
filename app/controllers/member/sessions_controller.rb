@@ -28,7 +28,7 @@ class Member::SessionsController < Devise::SessionsController
 
   # 新入社員がログイン後の遷移先
   def after_sign_in_path_for(resource)
-    member_new_employees_path
+    member_orders_path
   end
 
   # 新入社員がログアウト後の遷移先
