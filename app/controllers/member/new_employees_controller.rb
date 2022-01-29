@@ -1,4 +1,5 @@
 class Member::NewEmployeesController < ApplicationController
+  before_action :authenticate_new_employee!
   def index
     @new_employees = NewEmployee.all
   end

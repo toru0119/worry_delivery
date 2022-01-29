@@ -50,16 +50,6 @@
                 </button>
                 <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
-                      <%= link_to "先輩社員一覧", member_customers_path, class: "nav-link" %>
-                  </li>
-                </button>
-                <button type="button" class="btn btn-outline-secondary mx-1">
-                  <li class="nav-item">
-                      <%= link_to "注文", member_orders_path, class: "nav-link" %>
-                  </li>
-                </button>
-                <button type="button" class="btn btn-outline-secondary mx-1">
-                  <li class="nav-item">
                       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
                   </li>
                 </button>
@@ -76,21 +66,6 @@
             <% elsif new_employee_signed_in? %>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
-                <button type="button" class="btn btn-outline-secondary mx-1">
-                  <li class="nav-item">
-                      <%= link_to "ジャンル", admin_genres_path, class: "nav-link" %>
-                  </li>
-                </button>
-                <button type="button" class="btn btn-outline-secondary mx-1">
-                  <li class="nav-item">
-                      <%= link_to "社内報", admin_in_company_reports_path, class: "nav-link" %>
-                  </li>
-                </button>
-                <button type="button" class="btn btn-outline-secondary mx-1">
-                  <li class="nav-item">
-                      <%= link_to "商品", admin_items_path, class: "nav-link" %>
-                  </li>
-                </button>
                 <button type="button" class="btn btn-outline-secondary mx-1">
                   <li class="nav-item">
                       <%= link_to "新入社員一覧", member_new_employees_path, class: "nav-link" %>

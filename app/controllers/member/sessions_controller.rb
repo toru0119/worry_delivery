@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Member::SessionsController < Devise::SessionsController
-  # before_action :authenticate_member!,except: [:top, :about]
+  # before_action :authenticate_new_employee!,except: [:top, :about]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

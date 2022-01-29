@@ -1,4 +1,5 @@
 class Member::OrdersController < ApplicationController
+  before_action :authenticate_new_employee!
   def index
     @orders = Order.all
     @order = Order.page(params[:page]).per(10)

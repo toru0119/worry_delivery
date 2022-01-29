@@ -1,4 +1,5 @@
 class Admin::InCompanyReportsController < ApplicationController
+  before_action :authenticate_admin!
   def create
     @in_company_report = InCompanyReport.new(in_company_report_params)
     if @in_company_report.save

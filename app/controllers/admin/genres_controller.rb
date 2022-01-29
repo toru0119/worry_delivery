@@ -1,6 +1,6 @@
 class Admin::GenresController < ApplicationController
   # 管理者認識機能(管理者以外はいじれない)
-  # before_action :authenticate_admin!, only: [:create, :index, :edit, :update]
+  before_action :authenticate_admin!
 
   def create
     @genre = Genre.new(genre_params)

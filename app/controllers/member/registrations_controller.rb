@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Member::RegistrationsController < Devise::RegistrationsController
-  # before_action :authenticate_member!,except: [:top, :about]
+  # before_action :authenticate_new_employee!,except: [:top, :about]
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
