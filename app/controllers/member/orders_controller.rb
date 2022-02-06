@@ -1,7 +1,8 @@
 class Member::OrdersController < ApplicationController
   before_action :authenticate_new_employee!
   def index
-    @orders = Order.all
+    # 新しい順
+    @orders = Order.all.order(created_at: :desc)
     @order = Order.page(params[:page]).per(10)
   end
 
